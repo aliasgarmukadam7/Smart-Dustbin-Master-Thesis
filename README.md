@@ -81,5 +81,4 @@ Only selected excerpts are included in the thesis appendix.
 
 ## Author
 
-Aliasgar Mukadam
-Master Thesis Project
+Aliasgar Imtiyaz Mukadam
