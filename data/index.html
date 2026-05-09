@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SMART_DUSTBIN_V1</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <!-- <div class="logo"></div> -->
+        <div>
+          <h1>SMART DUSTBIN</h1>
+          <div class="sub">ESP32 • Live Dashboard</div>
+        </div>
+      </div>
+      <div class="pill">
+        <span class="dot" id="dot"></span>
+        <span id="conn">Connecting…</span>
+        <span id="ip" style="opacity:.7"></span>
+      </div>
+    </div>
+
+    <!-- <div id="dbg">—</div> -->
+
+    <div class="grid">
+      <div class="card">
+        <div class="title">
+          <h2>Monitoring</h2>
+          <!-- <h2>Fill Level</h2> -->
+          <!-- <span class="status" id="statusPill">—</span> -->
+        </div>
+        <div class="chiprow">
+          <div class="chip"><span class="led" id="led_ir"></span><span id="c_ir">IR: —</span></div>
+          <div class="chip"><span class="led" id="led_lid"></span><span id="c_lid">Lid: —</span></div>
+          <!-- <div class="chip"><span class="led" id="led_fill"></span><span id="c_fill">Fill: —</span></div> -->
+          <div class="chip"><span class="led" id="led_water"></span><span id="c_water">Moisture: —</span></div>
+          <div class="chip"><span class="led" id="led_alarm"></span><span id="c_alarm">Alarm: —</span></div>
+        </div>
+
+        <div class="hero">
+          <div class="ring">
+            <svg width="210" height="210" viewBox="0 0 200 200">
+              <defs>
+                <linearGradient id="gradFill" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#6aa9ff"/>
+                  <stop offset="55%" stop-color="#2dff84"/>
+                  <stop offset="100%" stop-color="#ffe45e"/>
+                </linearGradient>
+              </defs>
+              <circle cx="100" cy="100" r="78" fill="none" stroke="var(--ringbg)" stroke-width="16"/>
+              <circle
+                id="prog"
+                cx="100"
+                cy="100"
+                r="78"
+                fill="none"
+                stroke="url(#gradFill)"
+                stroke-linecap="round"
+                stroke-width="16"
+                stroke-dasharray="490"
+                stroke-dashoffset="490"
+              />
+            </svg>
+
+            <div class="center">
+              <div class="big" id="fill">--%</div>
+              <div class="small">Full</div>
+            </div>
+          </div>
+
+          <div style="flex:1;min-width:300px">
+            <div class="kpi">
+              <div class="box"><div class="lbl">Distance</div><div class="val" id="dist">—</div></div>
+              <div class="box"><div class="lbl">Occupancy</div><div class="val" id="binState">—</div></div>
+              <div class="box"><div class="lbl">Hand Sensor</div><div class="val" id="ir">—</div></div>
+              <div class="box"><div class="lbl">Lid</div><div class="val" id="lid">—</div></div>
+              <div class="box"><div class="lbl">Moisture</div><div class="val" id="water">—</div></div>
+              <div class="box"><div class="lbl">Alarm</div><div class="val" id="alarm">—</div></div>
+            </div>
+
+          </div>
+
+          <div class="chartWrap">
+            <!-- <div class="lbl">Live Fill Chart </div> -->
+             <!-- <div class="lbl">Live Fill Trend <span style="opacity:.6">(last 60s)</span></div> -->
+             <h2>Live Fill Trend 
+              <!-- <span style="opacity:.6">(last 60s)</span> -->
+            </h2>
+            <canvas id="chart" width="1300" height="260"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="title">
+          <h2>Manual Control Panel</h2>
+        </div>
+        <div class="sub">
+          Manual actions temporarily override automatic behavior.
+        </div>
+        
+        <div class="controls">
+          
+          <p class="p">Lid Control:</p>
+          <button class="btn green" id="btnOpen">Open Lid</button>
+          <button class="btn red" id="btnClose">Close Lid</button>
+        </div>
+        
+        <div class="controls">
+          <p>Alarm mode:</p>
+          <button class="btn green" id="alarmon">Sound</button>
+          <button class="btn red" id="alarmoff">Mute</button>
+        </div>
+
+
+        <div class="dumpAnimCard">
+          <!-- <div class="dumpAnimTitle">Animation</div> -->
+          <div class="scene" id="scene">
+            <div class="handIndicator" id="handIndicator">HAND</div>
+            <div class="binArea">
+              <div class="lidAnim" id="lidAnim"></div>
+              <div class="binBody">
+                <div class="binFillAnim" id="binFillAnim"></div>
+              </div>
+              <div class="garbageAnim" id="garbageAnim"></div>
+            </div>
+           
+          </div>
+           <div class="sceneStatus" id="sceneStatus">WAITING FOR HAND</div>
+        </div>
+      </div>
+  
+     <br></br>
+    </div>
+     <div class="card">
+        <div class="title">
+          <h2>Live Activity Log</h2>
+          <span class="status">Last 12</span>
+        </div>
+        <div class="log" id="log"></div>
+        <div class="sub">
+          Moisture likely means wet waste. Alarm beeps when the bin is full.
+        </div>
+      </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

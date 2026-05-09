@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Build files
+build/
+dist/
+
+# Arduino temporary files
+*.o
+*.a
+*.so
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# PlatformIO
+.pio/
+
+# Temporary files
+tmp/
+temp/
+
+# OS files
+Thumbs.db
