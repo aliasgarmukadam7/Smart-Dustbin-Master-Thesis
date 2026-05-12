@@ -3,7 +3,7 @@
 #include "globals.h"                                             // Shared system state access functions (sensor_get, sensor_update)
 #include "water_sensor.h"
 
-// === Water Sensor Initialization ===
+// === Water Sensor Initialisation ===
 // Configures the ADC (Analog-to-Digital Converter) for reading the water sensor.
 void water_sensor_init()
 {

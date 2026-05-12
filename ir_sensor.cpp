@@ -4,7 +4,7 @@
 #include "ir_sensor.h"
 #include "events.h"     // FSM event definitions
 
-// === Initialization ===
+// === Initialisation ===
 
 // Configures IR sensor pin as input.
 // The sensor outputs a digital signal (HIGH/LOW).

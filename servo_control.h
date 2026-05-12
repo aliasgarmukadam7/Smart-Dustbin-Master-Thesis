@@ -1,7 +1,7 @@
 #pragma once
 
 // === SERVO CONTROL INTERFACE ===
-// Initializes PWM hardware for servo control.
+// Initialises PWM hardware for servo control.
 void servo_init();
 
 // Sets servo position in degrees (0–180).

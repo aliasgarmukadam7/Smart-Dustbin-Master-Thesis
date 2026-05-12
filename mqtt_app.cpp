@@ -124,7 +124,7 @@ static void mqtt_reconnect()
   }
 }
 
-// === Public API: Initialization ===
+// === Public API: Initialisation ===
 
 // Configures MQTT broker and callback handler
 void mqtt_app_start()

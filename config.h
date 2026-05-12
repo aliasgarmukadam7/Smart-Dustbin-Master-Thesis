@@ -2,7 +2,7 @@
 
 // === HARDWARE PIN CONFIGURATION ===
 // Defines GPIO assignments for all sensors and actuators.
-// Centralizing this allows easy hardware changes without modifying application logic.
+// Centralising this allows easy hardware changes without modifying application logic.
 
 #define TRIG_GPIO   5    // Ultrasonic trigger pin (output)
 #define ECHO_GPIO   17   // Ultrasonic echo pin (input)

@@ -16,9 +16,6 @@
 
 // === Global Control Flags ===
 
-// Enables/disables buzzer functionality
-bool buzzer_enabled = true;
-
 // Indicates if alert condition (e.g., bin full) is active
 bool alert_active = false;
 
@@ -32,6 +29,7 @@ typedef enum {
     STATE_OPENING_LID,       // Servo is opening lid
     STATE_LID_OPEN,          // Lid is open
     STATE_CLOSING_LID,       // Servo is closing lid
+    STATE_BIN_FULL_CLOSING,  // Servo closing lid when bin full
     STATE_BIN_FULL           // Bin is full (alert mode)
 } dustbin_state_t;
 
@@ -94,6 +92,7 @@ void fsm_task(void *arg)
 
                 case EVENT_HAND_REMOVED:
                     hand_present = false;
+                    open_time_us = micros();
                     break;
 
                 default:
@@ -164,12 +163,12 @@ void fsm_task(void *arg)
 
                         send_buzzer_cmd(BUZZER_CMD_ALERT_ON);
                         alert_active = true;
-
+                        buzzer_manual_mode = false;
                         Serial.println("FSM: ALERT MODE ON");
 
                         // Close lid immediately
                         send_servo_cmd(SERVO_CMD_CLOSE);
-                        state = STATE_CLOSING_LID;
+                        state = STATE_BIN_FULL_CLOSING;
                     }
 
                     // Manual close
@@ -181,13 +180,31 @@ void fsm_task(void *arg)
                     }
 
                     break;
+                    
+                // --- BIN FULL CLOSING ---
+                // Transitional state while lid is closing due to bin-full condition
+                case STATE_BIN_FULL_CLOSING:
+
+                    // Wait for servo task confirmation that lid is fully closed
+                    if (event.type == EVENT_SERVO_CLOSE_DONE) {
+
+                        // Lid is now secured and system enters permanent alert state
+                        state = STATE_BIN_FULL;
+
+                        Serial.println("FSM: Lid secured, bin full");
+                    }
+
+                    break;
 
                 // --- CLOSING ---
                 case STATE_CLOSING_LID:
-
-                    if (event.type == EVENT_SERVO_CLOSE_DONE) {
+                    if (event.type == EVENT_HAND_DETECTED) {
+                        send_servo_cmd(SERVO_CMD_OPEN);
+                        state = STATE_OPENING_LID;
+                    }
+                    else if (event.type == EVENT_SERVO_CLOSE_DONE) {
                         state = STATE_IDLE_CLOSED;
-
+                        open_time_us = 0;
                         Serial.println("FSM: Lid closed");
                     }
 

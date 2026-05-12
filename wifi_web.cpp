@@ -10,7 +10,7 @@
 #include "events.h"              // Event definitions for FSM (finite state machine)
 
 
-// === Web Server Initialization ===
+// === Web Server Initialisation ===
 // Create an asynchronous web server object listening on port 80 (HTTP)
 AsyncWebServer server(80);
 
@@ -122,8 +122,8 @@ static void handleAlarmOff(AsyncWebServerRequest *request)
     request->send(200, "application/json", "{\"ok\":1,\"alarm\":\"off\"}");
 }
 
-// === System Initialization Function ===
-// Initializes filesystem, connects to WiFi, and starts web server
+// === System Initialisation Function ===
+// Initialises filesystem, connects to WiFi, and starts web server
 void wifi_web_start()
 {
     // --- Mount Filesystem ---

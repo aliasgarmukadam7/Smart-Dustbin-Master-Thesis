@@ -29,7 +29,7 @@ static void servo_write_us(uint32_t us)
     ledcWrite(SERVO_GPIO, duty);
 }
 
-// === Initialization ===
+// === Initialisation ===
 // Configures ESP32 LEDC PWM channel for servo control
 void servo_init()
 {

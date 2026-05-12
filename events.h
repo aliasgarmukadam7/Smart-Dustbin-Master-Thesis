@@ -9,7 +9,7 @@
 
 // Architecture Role:
 // Sensors / MQTT / Web → Events → FSM → Commands → Actuators
-// By standardizing events, the system achieves:
+// By standardising events, the system achieves:
 // - Loose coupling between modules
 // - Clear and maintainable logic
 // - Easy scalability

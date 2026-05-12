@@ -34,7 +34,7 @@ extern QueueHandle_t servo_cmd_queue;
 // Queue for controlling buzzer task
 extern QueueHandle_t buzzer_cmd_queue;
 
-// === SYNCHRONIZATION ===
+// === SYNCHRONISATION ===
 
 // Mutex to protect shared system state during read/write operations.
 // Prevents race conditions between multiple tasks.
@@ -42,7 +42,7 @@ extern SemaphoreHandle_t g_sensor_mutex;
 
 // === SYSTEM STATE MANAGEMENT API ===
 
-// Initializes system state and synchronization primitives
+// Initializes system state and synchronisation primitives
 void sensor_init();
 
 // Updates global system state (thread-safe)

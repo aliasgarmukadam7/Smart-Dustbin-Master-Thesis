@@ -1,6 +1,6 @@
 #pragma once
 
-// Initializes ADC settings for the water sensor
+// Initialises ADC settings for the water sensor
 void water_sensor_init();
 
 // Reads raw analog value from the water sensor

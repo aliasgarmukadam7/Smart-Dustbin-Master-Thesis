@@ -1,7 +1,7 @@
 #pragma once
 
 // === MQTT APPLICATION INTERFACE ===
-// Initializes MQTT client and connects to broker.
+// Initialises MQTT client and connects to broker.
 // Should be called after WiFi is connected.
 void mqtt_app_start();
 

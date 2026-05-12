@@ -2,7 +2,7 @@
 // SMART DUSTBIN - MAIN ENTRY POINT
 // =====================================
 //
-// This file initializes all system components and starts
+// This file initialises all system components and starts
 // FreeRTOS tasks.
 //
 // Architecture Overview:
@@ -42,8 +42,8 @@ void setup()
     delay(2000);                 // Allows time for serial monitor connection.
     Serial.println("Smart Dustbin Started");
 
-    // === SENSOR INITIALIZATION === 
-    sensor_init();               // Initialize global shared state + mutex
+    // === SENSOR INITIALISATION === 
+    sensor_init();               // Initialise global shared state + mutex
     ultrasonic_init();           // Ultrasonic sensor (Measures bin fill level)
     ir_init();                   // IR sensor (Detects user presence - hand detection)
     servo_init();                // Servo motor (Lid actuator)
@@ -65,7 +65,7 @@ void setup()
     // Ensure lid starts in a known safe state
     servo_write_deg(LID_CLOSED_DEG);
     
-    // === NETWORK INITIALIZATION ===
+    // === NETWORK INITIALISATION ===
 
     wifi_web_start();   // Local web interface for monitoring/control
     mqtt_app_start();   // Cloud connectivity via MQTT broker 

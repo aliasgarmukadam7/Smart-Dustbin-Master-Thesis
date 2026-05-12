@@ -2,7 +2,7 @@
 
 // === BUZZER CONTROL INTERFACE ===
 
-// Initializes PWM for buzzer
+// Initialises PWM for buzzer
 void buzzer_init();
 
 // Low-level control: turn buzzer ON (hardware)

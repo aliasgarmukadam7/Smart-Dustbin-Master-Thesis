@@ -45,7 +45,7 @@ system_state_t g_sensor = {
 // Protects access to g_sensor from concurrent tasks
 SemaphoreHandle_t g_sensor_mutex = NULL;
 
-// === Initialization ===
+// === Initialisation ===
 // Creates the mutex used for protecting shared state.
 // Must be called before any task accesses g_sensor.
 void sensor_init()

@@ -1,6 +1,6 @@
 #pragma once
 
-// Initializes ultrasonic sensor pins and configuration
+// Initialises ultrasonic sensor pins and configuration
 void ultrasonic_init();
 
 // Measures distance in centimeters using ultrasonic sensor

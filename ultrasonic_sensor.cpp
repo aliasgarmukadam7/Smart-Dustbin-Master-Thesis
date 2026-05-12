@@ -7,7 +7,7 @@
 #include "events.h"               // Event types for FSM communication
 #include "ultrasonic_sensor.h"
 
-// === Initialization ===
+// === Initialisation ===
 
 // Configures GPIO pins for the ultrasonic sensor.
 void ultrasonic_init()

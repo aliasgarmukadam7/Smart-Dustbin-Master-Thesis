@@ -2,7 +2,7 @@
 
 // === INFRARED (IR) SENSOR INTERFACE ===
 
-// Initializes the IR sensor GPIO pin.
+// Initialises the IR sensor GPIO pin.
 void ir_init();
 
 // FreeRTOS task that:

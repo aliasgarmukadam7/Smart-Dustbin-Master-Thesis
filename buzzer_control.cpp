@@ -4,7 +4,7 @@
 #include "buzzer_control.h"
 #include "events.h"
 
-// === Initialization ===
+// === Initialisation ===
 // Configures PWM channel for buzzer output
 void buzzer_init()
 {
